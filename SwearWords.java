@@ -6,13 +6,13 @@ public class SwearWords
 {
 	String swear;
 	
-	public SwearWords (String swearword)
+	public SwearWords (String swear)
 	{
 		this.swear = swear;
 	}
 	
 	public String toString()
 	{
-		return swear + ", " ;
+		return swear;
 	}
 }

@@ -1,5 +1,6 @@
 package assignment;
 
-public class FileReader {
+public class FileReader 
+{
 
 }
