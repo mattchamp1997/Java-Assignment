@@ -3,6 +3,7 @@ package assignment;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import assignment.FileReader;
 import java.util.*;
 import java.io.*;
 
@@ -73,7 +74,7 @@ public class GUI extends JFrame implements ActionListener
 		//Program start button
 		if (event.getSource() == start)
 		{
-			JOptionPane.showMessageDialog(this, "Gardahash");
+			FileReader fileread = new FileReader(swearList);
 		}
 		
 		//Button to add items to arrayList
