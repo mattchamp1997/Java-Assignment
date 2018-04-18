@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
+import java.io.*;
 
 public class GUI extends JFrame implements ActionListener
 {
@@ -12,12 +13,12 @@ public class GUI extends JFrame implements ActionListener
 	JTextField addSwearField, search_listF, delete_text;
 	
 	//ArrayList
-	ArrayList<String> swearList = new ArrayList<String>();
+	public ArrayList<String> swearList = new ArrayList<String>();
 	
 	GUI(String title)
 	{
 		super(title);
-		setSize(500,500);
+		setSize(550,300);
 		setLayout(new FlowLayout());
 		
 		//Instantiate Objects
@@ -63,15 +64,19 @@ public class GUI extends JFrame implements ActionListener
 		setVisible(true);
 	}
 	
+	//Add functionality to buttons
 	public void actionPerformed(ActionEvent event)
 	{
 		String swear, search, deleteWord;
+		int listSize;
 		
+		//Program start button
 		if (event.getSource() == start)
 		{
 			JOptionPane.showMessageDialog(this, "Gardahash");
 		}
 		
+		//Button to add items to arrayList
 		if (event.getSource() == add1)
 		{
 			swear = addSwearField.getText();
@@ -80,6 +85,7 @@ public class GUI extends JFrame implements ActionListener
 			JOptionPane.showMessageDialog(this, "Word added to swear list: " + swear.toString());
 		}
 		
+		//Button to print contents of the arrayList
 		if (event.getSource() == printSwearList)
 		{
 			for (int i=0; i < swearList.size(); i++)
@@ -88,24 +94,28 @@ public class GUI extends JFrame implements ActionListener
 			}
 		}
 		
+		//Button to search for a particular word in arrayList
 		if (event.getSource() == search_listButton)
 		{
 			search = search_listF.getText();
 			
 			if (swearList.contains(search))
 			{
-				System.out.println("This word is in the list");
+				JOptionPane.showMessageDialog(this, search +" is in the list");
 			}
 			else
 			{
-				System.out.println("This is NOT in the list");
+				JOptionPane.showMessageDialog(this, search + " is NOT in the list");
 			}
 		}
 		
+		//Functionality for delete button when user wants to remove element from the list
 		if (event.getSource() == delete)
 		{
 			deleteWord = delete_text.getText();
+			listSize = swearList.size();
 			
+			//Searches for word in list and removes it if found
 			for(int i=0; i<swearList.size(); i++)
 			{
 				if (deleteWord.contains(swearList.get(i)))
@@ -114,8 +124,16 @@ public class GUI extends JFrame implements ActionListener
 					JOptionPane.showMessageDialog(this, deleteWord + " has been deleted from the list");
 				}
 			}
+			
+			//If the word the user wants to delete from the list can't be found, tell user this
+			if (listSize == swearList.size())
+			{
+				JOptionPane.showMessageDialog(this, deleteWord + " was not found in the list");
+			}
+			
 		}
 		
+		//Button to completely erase contents of arrayList
 		if (event.getSource() == deleteAll)
 		{
 			swearList.clear();

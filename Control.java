@@ -6,7 +6,7 @@ public class Control {
 	{
 		// TODO Auto-generated method stub
 		
-		GUI screen1 = new GUI("Please select a file to check");
+		GUI screen1 = new GUI("Please enter a list of swear words");
 	}
 
 }
